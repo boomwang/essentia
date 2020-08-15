@@ -142,11 +142,14 @@ void PitchContoursMultiMelody::compute() {
 
   // no contours -> zero pitch vector output
   if (contoursBins.empty()) {
-      vector<Real> zero;
-      zero.push_back(0.0);
-      for (int i=0; i<(int)pitch.size(); i++){
-          pitch.push_back(zero);
-      }
+//      vector<Real> zero;
+//      zero.push_back(0.0);
+//      for (int i=0; i<(int)pitch.size(); i++){
+//          pitch.push_back(zero);
+//      }
+    for (int i=0; i<pitch.size(); i++){//modi by boomwang：源代码导致pitch泄漏！！！
+        pitch[i].push_back(0.0);
+    }
     return;
   }
     
